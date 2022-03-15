@@ -51,14 +51,67 @@
 				$this->responder();
 			}
 		}
-
 	}
 
-	$pai = new Pai();
+	class Filho extends Pai{
+
+		public function __construct() {
+			//exibir os métodos do objeto
+			echo "<pre>";
+				print_r(get_class_methods($this));	
+			echo "</pre>";
+		}
+
+		private function executarMania()
+		{
+			echo "Roer unha";
+		}
+
+		public function x() {
+			$this->executarMania();
+		}
+
+		//O método protected pode ser sobrescrito
+		protected function responder()
+		{
+			echo "Olá";
+		}
+	}
+
+	$filho = new Filho();
+
+	echo "<pre>";
+		print_r($filho);
+	echo "</pre>";
+
+	$filho->executarAcao();
+	echo "<br>";
+	$filho->x();
+
+	/*echo $filho->__get('nome'); //esse método tem a inteligência de referenciar ao valor na classe onde foi implementado
+	$filho->__set('nome', 'Carlos');
+	echo "<br>";
+	echo $filho->__get('nome'); 
+
+	echo "<pre>";
+		print_r($filho);
+	echo "</pre>";*/
+
+	/*echo $filho->getAtributo('nome');
+	$filho->setAtributo('nome', 'Pereira');
+
+	echo "<pre>";
+		print_r($filho);
+	echo "</pre>";
+
+	echo "<br>";
+	echo $filho->getAtributo('nome');*/
+
+	/*$pai = new Pai();
 	$pai->executarAcao();
 
 	echo "<br>";
-	echo $pai->sobrenome;
+	echo $pai->sobrenome;*/
 
 	/*echo "<br>";
 	$pai->sobrenome = 'Xavier';
